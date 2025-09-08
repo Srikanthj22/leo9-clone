@@ -1,0 +1,105 @@
+/* About.css */
+.about-section {
+  padding: 80px 20px;
+  background: var(--about-bg, #ffffff);
+  color: var(--about-text, #111111);
+}
+
+body[data-hero-theme='dark'] .about-section {
+  --about-bg: #0b1220;
+  --about-text: #ffffff;
+}
+
+.about-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.about-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  margin-bottom: 8px;
+}
+
+.about-subtitle {
+  font-size: 1.05rem;
+  opacity: 0.8;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 24px;
+}
+
+.about-intro {
+  background: var(--about-card-bg, #ffffff);
+  border: 1px solid var(--about-card-border, rgba(17,17,17,0.08));
+  border-radius: 16px;
+  padding: 20px;
+}
+
+body[data-hero-theme='dark'] .about-intro,
+body[data-hero-theme='dark'] .highlight-item {
+  --about-card-bg: #101827;
+  --about-card-border: rgba(255,255,255,0.14);
+}
+
+.about-highlights {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.highlight-item {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 12px;
+  align-items: center;
+  background: var(--about-card-bg, #ffffff);
+  border: 1px solid var(--about-card-border, rgba(17,17,17,0.08));
+  border-radius: 16px;
+  padding: 16px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.highlight-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+  border-color: var(--about-card-border, rgba(17,17,17,0.14));
+}
+
+.highlight-badge {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #e0e7ff, #fff);
+  color: #111;
+  font-weight: 700;
+}
+
+/* Slide-in animation shared via .slide-in */
+.slide-in {
+  opacity: 0;
+  animation: slideIn 0.6s ease forwards;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .about-content {
+    grid-template-columns: 1fr;
+  }
+} 

@@ -1,0 +1,279 @@
+/* Navbar.css */
+.navbar {
+  background-color: #ffffff;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 28px; /* global horizontal padding */
+  width: 100%;
+}
+
+.navbar-logo {
+  color: #111111;
+  justify-self: start;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2.2rem);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+  padding-left: 8px; /* slight extra left pad for logo */
+  transition: transform 0.2s ease;
+}
+
+.navbar-logo:hover {
+  transform: translateY(-1px);
+}
+
+.navbar-logo-mark {
+  height: 1.25em; /* larger than brand text for emphasis */
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+@media (min-width: 1200px) {
+  .navbar-logo-mark { height: 1.35em; }
+}
+
+@media (max-width: 640px) {
+  .navbar-logo { gap: 8px; }
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  text-align: center;
+  padding-right: 8px; /* slight extra right pad for menu group */
+}
+
+.nav-item {
+  height: 80px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links, .nav-action {
+  color: #111111;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  padding: 0 1rem;
+  height: 44px;
+  min-width: 44px;
+  transition: all 0.3s ease-out;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1rem; /* unified size */
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.nav-links:hover, .nav-action:hover {
+  color: #111111;
+  background: rgba(17,17,17,0.06);
+  transform: translateY(-1px);
+}
+
+.menu-icon {
+  display: none;
+  cursor: pointer;
+}
+
+.menu-icon .bar1,
+.menu-icon .bar2,
+.menu-icon .bar3 {
+  width: 25px;
+  height: 3px;
+  background-color: #111111;
+  margin: 5px 0;
+  transition: 0.4s;
+}
+
+/* Hamburger menu animation */
+.menu-icon.open .bar1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.menu-icon.open .bar2 {
+  opacity: 0;
+}
+
+.menu-icon.open .bar3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Theme toggle specific visuals */
+.theme-toggle {
+  position: relative;
+  width: 44px;
+  padding: 0;
+}
+
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #111111;
+  transition: transform 0.45s cubic-bezier(.2,.7,.2,1), opacity 0.3s ease;
+  font-size: 18px;
+}
+
+.theme-toggle .icon-sun::before { content: '☀️'; }
+.theme-toggle .icon-moon::before { content: '🌙'; }
+
+.theme-toggle.is-dark .icon-sun { opacity: 1; transform: translateY(0); }
+.theme-toggle.is-dark .icon-moon { opacity: 0; transform: translateY(20px); }
+.theme-toggle.is-light .icon-sun { opacity: 0; transform: translateY(-20px); }
+.theme-toggle.is-light .icon-moon { opacity: 1; transform: translateY(0); }
+
+/* Services submenu as rectangular cards */
+.services-item:hover .services-submenu {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  pointer-events: all;
+}
+
+.services-submenu {
+  position: absolute;
+  top: calc(100% - 10px);
+  left: 50%;
+  transform: translate(-50%, -6px);
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  border: 1px solid rgba(17,17,17,0.08);
+  padding: 12px;
+  border-radius: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 1000;
+  max-width: calc(100vw - 40px);
+}
+
+.service-card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  min-width: 220px;
+  height: 64px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #111;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+.service-web { background: #d6e4ff; }
+.service-mobile { background: #d3f9e8; }
+.service-cloud { background: #ffe8cc; }
+
+/* Responsive override for submenu */
+@media screen and (max-width: 960px) {
+  .nav-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto; /* Adjust height for content */
+    position: absolute;
+    top: 80px;
+    left: -100%;
+    opacity: 1;
+    transition: all 0.5s ease;
+    background: #ffffff;
+    padding-bottom: 20px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  .nav-menu.active {
+    left: 0;
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
+
+  .nav-item {
+    width: 100%;
+    height: unset; /* Reset height for mobile */
+  }
+
+  .nav-links, .nav-action {
+    text-align: center;
+    padding: 1rem 2rem;
+    width: 100%;
+    display: inline-flex;
+    height: 56px;
+  }
+
+  .nav-links:hover, .nav-action:hover {
+    background-color: rgba(17,17,17,0.06);
+    color: #111111;
+    border-radius: 0;
+  }
+
+  .navbar-logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
+
+  .menu-icon {
+    display: block;
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    transform: translate(-100%, 60%);
+    font-size: 1.8rem;
+  }
+
+  .services-submenu {
+    position: static;
+    left: auto;
+    top: auto;
+    transform: none;
+    opacity: 1;
+    pointer-events: all;
+    border-radius: 12px;
+    margin: 8px 20px 0;
+    justify-content: center;
+    grid-template-columns: 1fr;
+    background: #ffffff;
+    border-color: rgba(17,17,17,0.08);
+  }
+
+  .service-card { min-width: auto; width: calc(100% - 40px); margin: 0 20px; }
+}
