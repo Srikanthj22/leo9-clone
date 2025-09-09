@@ -45,12 +45,3 @@ To get this project up and running on your local machine, follow these steps:
     ```bash
     npm start
     ```
-
-The page will reload if you make edits. You will also see any lint errors in the console.
-
-Customization
-
--   Hero Background Image: Replace `src/assets/images/hero-bg.jpg` with your desired background image.
-
-
->>>>>>> a52ddc4bc5c0db61dee0a7b7b601b63c16a196d1
